@@ -18,7 +18,9 @@ _In_ PUNICODE_STRING RegistryPath) {
 	info.dwOSVersionInfoSize = sizeof(RTL_OSVERSIONINFOW);
 	
 	if (RtlGetVersion(&info) == STATUS_SUCCESS)
-		DbgPrintEx(0, 0, "Version OS: %d\n", info.dwMajorVersion);
+		DbgPrintEx(0, 0, "Version OS: %llu\nBuild number: %llu\nPlatform Id: %llu\n", 
+			info.dwMajorVersion,
+			info.dwBuildNumber);
 	else
 		DbgPrintEx(0,0, "ErrVerOS: OS version is not defined.\n");
 
